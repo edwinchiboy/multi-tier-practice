@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/models/data_layer.dart';
-
 import 'controllers/plan_controller.dart';
 
 class PlanProvider extends InheritedWidget {

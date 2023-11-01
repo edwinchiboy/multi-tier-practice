@@ -16,8 +16,8 @@ class Plan {
 
   Plan.fromModel(Model model)
       : id = model.id ?? 0,
-        name = model?.data['name'],
-        tasks = model?.data['task']
+        name = model.data['name'],
+        tasks = model.data['task']
                 ?.map<Task>((task) => Task.fromModel(task))
                 ?.toList() ??
             <Task>[];

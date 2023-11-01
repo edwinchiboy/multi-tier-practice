@@ -43,7 +43,7 @@ class _PlanScreenState extends State<PlanScreen> {
         return Future.value(true);
       },
       child: Scaffold(
-        appBar: AppBar(title: Text('Master Plan')),
+        appBar: AppBar(title: const Text('Master Plan')),
         body: Column(
           children: [
             Expanded(child: _buildList()),

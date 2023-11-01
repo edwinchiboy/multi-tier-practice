@@ -34,6 +34,6 @@ class InMemoryCache implements Repository {
 
   @override
   void update(Model item) {
-    _storage[item?.id ?? 0] = item;
+    _storage[item.id ?? 0] = item;
   }
 }
