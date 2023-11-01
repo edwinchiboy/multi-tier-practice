@@ -11,7 +11,8 @@ class PlanController {
     if (name.isEmpty) {
       return;
     }
-    name = _checkForDuplicates(plans.map((plan) => plan.name), name);
+    name = _checkForDuplicates(plans.map((plan) => plan.name ?? ""), name);
+
     services.createPlan(name);
   }
 
@@ -28,7 +29,7 @@ class PlanController {
       description = 'New Task';
     }
     description = _checkForDuplicates(
-        plan.tasks.map((task) => task.description), description);
+        plan.tasks?.map((task) => task.description), description);
     services.addTask(plan, description);
   }
 
@@ -36,10 +37,10 @@ class PlanController {
     services.deleteTask(plan, task);
   }
 
-  String _checkForDuplicates(Iterable<String> items, String text) {
-    final duplicatedCount = items.where((item) => item.contains(text)).length;
-    if (duplicatedCount > 0) {
-      text += ' ${duplicatedCount + 1}';
+  String _checkForDuplicates(Iterable<String>? items, String text) {
+    final duplicatedCount = items?.where((item) => item.contains(text)).length;
+    if ((duplicatedCount ?? 0) > 0) {
+      text += ' ${(duplicatedCount ?? 0) + 1}';
     }
     return text;
   }

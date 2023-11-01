@@ -16,14 +16,14 @@ class PlanScreen extends StatefulWidget {
 class _PlanScreenState extends State<PlanScreen> {
   ScrollController scrollController = ScrollController();
 
-  Plan get plan => widget.plan ?? Plan(id: 0);
+  Plan get plan => widget.plan ?? Plan();
 
   @override
   void initState() {
     super.initState();
 
-    scrollController = ScrollController()
-      ..addListener(() {
+    scrollController
+      .addListener(() {
         FocusScope.of(context).requestFocus(FocusNode());
       });
   }
@@ -50,7 +50,7 @@ class _PlanScreenState extends State<PlanScreen> {
             SafeArea(child: Text(plan.completenessMessage))
           ],
         ),
-        floatingActionButton: _buildAddTaskButton(),
+        floatingActionButton: _buildAddTaskButton(context),
       ),
     );
   }
@@ -58,8 +58,8 @@ class _PlanScreenState extends State<PlanScreen> {
   Widget _buildList() {
     return ListView.builder(
       controller: scrollController,
-      itemCount: plan.tasks.length,
-      itemBuilder: (context, index) => _buildTaskTile(plan.tasks[index]),
+      itemCount: plan.tasks?.length,
+      itemBuilder: (context, index) => _buildTaskTile(plan.tasks?[index]??Task()),
     );
   }
 
@@ -93,7 +93,7 @@ class _PlanScreenState extends State<PlanScreen> {
     );
   }
 
-  Widget _buildAddTaskButton() {
+  Widget _buildAddTaskButton(BuildContext context) {
     return FloatingActionButton(
       child: const Icon(Icons.add),
       onPressed: () {

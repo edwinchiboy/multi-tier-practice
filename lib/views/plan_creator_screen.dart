@@ -77,7 +77,7 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
             direction: DismissDirection.endToStart,
             onDismissed: (_) {
               final controller = PlanProvider.of(context);
-              controller?.deletePlan(plan ?? Plan(id: 0));
+              controller?.deletePlan(plan ?? Plan());
               setState(() {});
             },
             child: ListTile(

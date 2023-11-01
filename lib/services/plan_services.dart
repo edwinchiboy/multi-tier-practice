@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:untitled/repository/in_memory_cache.dart';
 import 'package:untitled/repository/repository.dart';
 import 'package:untitled/models/plan.dart';
@@ -29,14 +31,15 @@ class PlanServices {
   }
 
   void addTask(Plan plan, String description) {
-    final id = plan.tasks.last?.id ?? 0 + 1;
+    final id =
+        (plan.tasks?.isEmpty ?? true) ? 1 : (plan.tasks?.last?.id ?? 0) + 1;
     final task = Task(id: id, description: description);
-    plan.tasks.add(task);
+    plan.tasks?.add(task);
     savePlan(plan);
   }
 
   void deleteTask(Plan plan, Task task) {
-    plan.tasks.remove(task);
+    plan.tasks?.remove(task);
     savePlan(plan);
   }
 }
