@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../repository/repository.dart';
+import 'package:untitled/repository/repository.dart';
 
 class Task {
   final int? id;

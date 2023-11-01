@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/plan_provider.dart';
 
-import '../models/plan.dart';
-import '../models/task.dart';
+import 'package:untitled/models/plan.dart';
+import 'package:untitled/models/task.dart';
 
 class PlanScreen extends StatefulWidget {
   final Plan? plan;

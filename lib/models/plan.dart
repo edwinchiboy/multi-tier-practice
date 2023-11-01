@@ -1,6 +1,6 @@
 import 'package:untitled/models/task.dart';
 
-import '../repository/repository.dart';
+import 'package:untitled/repository/repository.dart';
 
 class Plan {
   int? id;
